@@ -24,9 +24,7 @@ class Chronometer {
 
   getSeconds() {
     // ... your code goes here
-    if (this.getMinutes() >= 1) {
-      return Math.floor(this.getMinutes % 60)
-    }
+      return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
@@ -48,7 +46,6 @@ class Chronometer {
     // ... your code goes here
     this.stop();
     this.currentTime = 0
-    this.start();
   }
 
   split() {
