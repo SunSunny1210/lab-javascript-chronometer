@@ -7,9 +7,13 @@ class Chronometer {
 
   start(callback) {
     // ... your code goes here
+    let startTime = Date.now();
     if (!this.intervalId) {
       this.intervalId = setInterval(() => {
-        this.currentTime += 10;
+        const now = Date.now();
+        const timePassed = now - startTime;
+        this.currentTime +=  timePassed;
+        startTime = now;
         if (callback) {
           callback();
         }
@@ -42,8 +46,10 @@ class Chronometer {
 
   stop() {
     // ... your code goes here
-    clearInterval(this.intervalId);
-    this.intervalId = null
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   reset() {

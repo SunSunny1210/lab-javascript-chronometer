@@ -56,7 +56,7 @@ function setSplitBtn() {
   // ... your code goes here
   if (btnRightElement.classList.contains('split')) {
     chronometer.split();
-    const li = document.createElement('li')
+    const li = document.createElement('li');
     li.innerHTML = chronometer.split();
     splitsElement.appendChild(li);
   }
@@ -68,12 +68,16 @@ function setStartBtn() {
     chronometer.start(() => {
       const computedMinutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
       const computedSeconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+      const computedMilliseconds = chronometer.computeTwoDigitNumber(Math.floor(chronometer.getMilliseconds() / 10))
  
       minDecElement.innerHTML = computedMinutes[0];
       minUniElement.innerHTML = computedMinutes[1];
 
       secDecElement.innerHTML = computedSeconds[0];
       secUniElement.innerHTML = computedSeconds[1];
+
+      milDecElement.innerHTML = computedMilliseconds[0];
+      milUniElement.innerHTML = computedMilliseconds[1];
     });
 
     btnLeftElement.classList.remove('start');
@@ -90,8 +94,7 @@ function setResetBtn() {
   // ... your code goes here
   if (btnRightElement.classList.contains('reset')) {
     chronometer.reset();
-    [minDecElement, minUniElement, secDecElement, secUniElement, milDecElement, milUniElement].forEach((el) => el.innerHTML = '0')
-    
+    [minDecElement, minUniElement, secDecElement, secUniElement, milDecElement, milUniElement].forEach((el) => el.innerHTML = '0'); 
   }
 }
 
