@@ -56,8 +56,9 @@ function setSplitBtn() {
   // ... your code goes here
   if (btnRightElement.classList.contains('split')) {
     chronometer.split();
-    
-    
+    const li = document.createElement('li')
+    li.innerHTML = chronometer.split();
+    splitsElement.appendChild(li);
   }
 }
 
